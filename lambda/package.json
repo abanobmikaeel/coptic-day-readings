@@ -1,0 +1,28 @@
+{
+	"name": "node-lambda-template",
+	"version": "0.0.2",
+	"description": "The bare minimum for a node.js app running on Amazon Lambda. Uses node-lambda under the hood to locally run and also deploy your node.js Amazon Lambda application.",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/motdotla/node-lambda-template.git"
+	},
+	"author": "motdotla",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/motdotla/node-lambda-template/issues"
+	},
+	"homepage": "https://github.com/motdotla/node-lambda-template",
+	"scripts": {
+		"setup": "./node_modules/.bin/node-lambda setup",
+		"test": "./node_modules/.bin/node-lambda run",
+		"package": "./node_modules/.bin/node-lambda package",
+		"deploy": "./node_modules/.bin/node-lambda deploy"
+	},
+	"devDependencies": {
+		"node-lambda": "^0.9.0"
+	},
+	"dependencies": {
+		"coptic-io": "1.0.0"
+	}
+}

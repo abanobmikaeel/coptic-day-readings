@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Text Converter</title>
+		<style>
+			textarea {
+				width: 100%;
+				height: 100px;
+			}
+
+			#output {
+				margin-top: 10px;
+				padding: 10px;
+				border: 1px solid #ccc;
+				background-color: #f5f5f5;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Text Converter</h1>
+		<label for="inputText">Original Text:</label>
+		<textarea id="inputText" placeholder="Enter your text here"></textarea>
+
+		<button id="convertAndCopyButton">Convert and Copy</button>
+
+		<div id="output">
+			<label for="outputText">Formatted Text:</label>
+			<textarea id="outputText" readonly></textarea>
+		</div>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				const inputText = document.getElementById('inputText')
+				const outputText = document.getElementById('outputText')
+				const convertAndCopyButton = document.getElementById(
+					'convertAndCopyButton'
+				)
+
+				convertAndCopyButton.addEventListener('click', function () {
+					const inputData = inputText.value
+					const modifiedData = inputData
+						.split('\n')
+						.filter((line) => line.trim() !== '')
+						.map((line) => line.replace(/"/g, '\\"'))
+						.join('\\n')
+						.replace(/\r/g, '')
+						.replace(/\n/g, '')
+
+					const outputData = `"text": "${modifiedData}"`
+					outputText.value = outputData
+
+					// Copy the formatted text to the clipboard
+					outputText.select()
+					document.execCommand('copy')
+				})
+			})
+		</script>
+	</body>
+</html>
